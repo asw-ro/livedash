@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Checkin</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='1em' font-size='70'>🚀</text></svg>"
+    />
+  </head>
+  <body>
+    <h1>🧑‍💼 Ce lucrăm noi astăzi</h1>
+
+    <div class="view-switcher-container">
+      <input type="radio" id="departmentView" name="viewType" value="department" checked />
+      <label for="departmentView">Vedere department</label>
+      <input type="radio" id="clientView" name="viewType" value="client" />
+      <label for="clientView">Vedere client</label>
+    </div>
+
+    <div class="filter-container" id="departmentFilterContainer">
+      <label for="departmentFilter">Department</label>
+      <select id="departmentFilter">
+        <option value="all">Toate</option>
+      </select>
+    </div>
+
+    <div class="filter-container" id="clientFilterContainer">
+      <label for="clientFilter">Client</label>
+      <select id="clientFilter">
+        <option value="all">Toți</option>
+      </select>
+    </div>
+
+    <div class="dashboard" id="dashboard"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

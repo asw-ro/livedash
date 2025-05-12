@@ -1,0 +1,245 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* General Styling */
+body {
+  font-family: "Arial", sans-serif; /* Clean and modern typography */
+  background: linear-gradient(to right, #f5f7fa, #c3cfe2); /* Soft gradient background */
+  color: #333;
+}
+
+h1,
+h2,
+h3 {
+  color: #0056b3; /* Blue-dominated color for headers */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  font-size: 2rem;
+}
+
+/* Filter Dropdown */
+.filter-container {
+  display: flex; /* Lay out label and select in a row */
+  align-items: center; /* Vertically align them */
+  justify-content: center; /* Center them if container is wider */
+  gap: 8px; /* Space between label and select */
+
+  width: -moz-fit-content; /* Firefox fallback */
+  width: fit-content; /* Shrink container to content width */
+  margin-left: auto; /* Center the container */
+  margin-right: auto;
+
+  margin-bottom: 0.5rem; /* Existing margin */
+  padding: 5px 15px; /* Add some padding to the container itself */
+}
+
+.filter-container label {
+  font-weight: 600;
+  color: #0056b3;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#departmentFilter,
+#clientFilter {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 250px;
+  font-size: 1rem;
+}
+
+/* Dashboard Layout */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+  gap: 15px;
+  padding: 10px;
+  justify-content: center;
+}
+
+/* Cards */
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin: 8px;
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 288px;
+  max-width: 378px;
+  width: 100%;
+  justify-self: center;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slightly enlarge the card */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Add a more prominent shadow */
+}
+
+.card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  border: 2px solid #0077cc;
+}
+
+.card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #111;
+}
+
+/* Task List */
+.task-list {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.task-list li {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.task-list li::before {
+  content: "\2022";
+  color: #0077cc;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* View Switcher */
+.view-switcher-container {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.view-switcher-container label {
+  margin: 0 10px;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #e9ecef;
+  color: #0056b3;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.view-switcher-container input[type="radio"] {
+  display: none; /* Hide the actual radio buttons */
+}
+
+.view-switcher-container input[type="radio"]:checked + label {
+  background-color: #0056b3;
+  color: white;
+  font-weight: bold;
+}
+
+/* Client View Specific Styles */
+.dashboard.client-view-active {
+  display: block; /* Override grid display for a list-like flow of client sections */
+}
+
+.client-section {
+  margin-bottom: 1.5rem; /* Reduced from 2rem */
+  padding: 1rem; /* Reduced from 1.5rem */
+  background-color: #ffffff; /* White background for client sections */
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Slightly reduced shadow */
+}
+
+.client-name {
+  font-size: 1.5rem; /* Reduced from 1.8rem */
+  color: #004085; /* Darker blue for client names */
+  margin-bottom: 1rem; /* Reduced from 1.5rem */
+  padding-bottom: 0.3rem; /* Reduced from 0.5rem */
+  border-bottom: 1px solid #e0e0e0; /* Thinner border */
+  text-align: left;
+}
+
+.client-colleagues-list {
+  /* Container for the list of colleagues under a client */
+  padding-left: 0.5rem; /* Reduced from 1rem */
+}
+
+.client-colleague-entry {
+  margin-bottom: 1rem; /* Reduced from 1.5rem */
+  padding-bottom: 0.75rem; /* Reduced from 1rem */
+  border-bottom: 1px dashed #eee; /* Separator line */
+}
+
+.client-colleague-entry:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.client-colleague-name {
+  font-size: 1.1rem; /* Reduced from 1.2rem */
+  color: #333;
+  margin-bottom: 0.3rem; /* Reduced from 0.5rem */
+  font-weight: 600;
+}
+
+.client-colleague-department {
+  font-size: 0.85rem; /* Reduced from 0.9rem */
+  color: #555;
+  font-weight: normal;
+  margin-left: 5px;
+}
+
+.synthetic-task-list {
+  list-style: none;
+  padding-left: 15px; /* Indent tasks under colleague */
+}
+
+.synthetic-task-list li {
+  margin-bottom: 4px; /* Reduced from 6px */
+  font-size: 0.9rem; /* Reduced from 0.95rem */
+  color: #444;
+  padding-left: 12px; /* Reduced from 15px */
+  position: relative;
+}
+
+.synthetic-task-list li::before {
+  content: "\2023"; /* Bullet character: ‣ */
+  color: #0077cc;
+  position: absolute;
+  left: 0;
+  top: 1px;
+  font-size: 0.8rem;
+}
+
+.client-view-department {
+  font-size: 0.9rem;
+  color: #555;
+  margin-left: 5px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
